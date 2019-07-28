@@ -9,7 +9,7 @@
 
 ## About <a name = "about"></a>
 
-Write your Oreilly's Highlights and Notes to a text file based on Book Title
+Write your Oreilly's Highlights and Notes to a text file based by book title
 
 ## Getting Started <a name = "getting_started"></a>
 
