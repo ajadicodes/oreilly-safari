@@ -50,26 +50,21 @@ class Highlights(object):
         else:
             self.data = data
 
-    @property
-    def nrows(self):
-        return self.data.shape[0]
-
-    @property
-    def ncols(self):
-        return self.data.shape[1]
-
-    def where_author(self, author):
+    def info(self):
         """
-        Given a dataframe, return rows that match a given author.
-
-        Returns:
-            DataFrame -- A comma-separated values (csv) file is returned as
-            two-dimensional data structure with labeled axes.
+        Prints the number of rows and columns in the data.
         """
-        df = self.data.query(f'authors == "{author}"')
-        return Highlights(df)
+        nrows = self.data.shape[0]
+        ncols = self.data.shape[1]
+        print(f'Number of rows: {nrows}.\nNumber of columns: {ncols}.')
 
-    def where_book_title(self, book_title):
+    def authors(self):
+        raise NotImplementedError
+
+    def book_title(self):
+        raise NotImplementedError
+
+    def by_book_title(self, book_title):
         """
         Given a dataframe, return reversed rows that match a given book title.
 
@@ -77,6 +72,7 @@ class Highlights(object):
             DataFrame -- A comma-separated values (csv) file is returned as
             two-dimensional data structure with labeled axes.
         """
+        book_title = _format_string(book_title)
         df = self.data.query(f'book_title == "{book_title}"')
         return Highlights(df)
 
