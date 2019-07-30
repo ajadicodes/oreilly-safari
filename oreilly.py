@@ -37,6 +37,8 @@ def read_csv(filepath):
     book_title_series = df['book_title'].apply(_format_string)
     df['book_title'] = book_title_series
 
+    df = df.iloc[::-1]
+
     return Highlights(df)
 
 
@@ -65,7 +67,6 @@ class Highlights(object):
             two-dimensional data structure with labeled axes.
         """
         df = self.data.query(f'authors == "{author}"')
-        df = df.iloc[::-1]
         return Highlights(df)
 
     def where_book_title(self, book_title):
@@ -77,7 +78,6 @@ class Highlights(object):
             two-dimensional data structure with labeled axes.
         """
         df = self.data.query(f'book_title == "{book_title}"')
-        df = df.iloc[::-1]
         return Highlights(df)
 
     def to_txt(self, filepath):
